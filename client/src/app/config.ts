@@ -1,5 +1,4 @@
-const FALLBACK_VAPID_PUBLIC_KEY =
-  "BBvQzSC_5YwNOWKQyMfMvPqXtvbO01rjb58e1v2-OEHFfwkkxX7sQabuaxmoZ-RKqQV-ZYDu0k6QL0xoWt91q9o";
+const FALLBACK_VAPID_PUBLIC_KEY = "";
 
 const DEFAULT_SERVER_URL = (
   (import.meta.env.VITE_SERVER_URL as string | undefined) ??

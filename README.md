@@ -68,10 +68,7 @@ The helper reuses the same service (`src/service/notification.service.ts`) as th
 ```bash
 cd client
 bun install
-cat <<'EOF' > .env
-VITE_SERVER_URL=http://localhost:3000
-VITE_VAPID_PUBLIC_KEY=<public key>
-EOF
+cp .env.example .env # then edit with your values
 bun run dev
 ```
 
