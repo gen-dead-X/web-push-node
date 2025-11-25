@@ -41,7 +41,11 @@ export async function sendSubscriptionToServer(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ subscription, userId }),
     });
-    if (!res.ok) throw new Error(`Server responded ${res.status}`);
+
+    if (!res.ok) {
+      throw new Error(`Server responded ${res.status}`);
+    }
+
     return await res.json();
   } catch (err) {
     console.error("sendSubscriptionToServer error", err);
@@ -58,7 +62,11 @@ export async function requestNotificationFromServer() {
         "x-user-id": userId,
       },
     });
-    if (!res.ok) throw new Error(`Server responded ${res.status}`);
+
+    if (!res.ok) {
+      throw new Error(`Server responded ${res.status}`);
+    }
+
     const data = (await res.json()) as NotificationDispatchResponse;
     return data;
   } catch (err) {

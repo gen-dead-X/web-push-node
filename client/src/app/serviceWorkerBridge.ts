@@ -8,7 +8,10 @@ export function bindServiceWorkerBridge() {
 
   navigator.serviceWorker.addEventListener("message", (event) => {
     const payload = event.data;
-    if (payload?.type !== "push") return;
+
+    if (payload?.type !== "push") {
+      return;
+    }
 
     showNotificationInApp({
       title: payload.data?.title,

@@ -19,8 +19,12 @@ export function setupNotificationControls(vapidPublicKey: string) {
   }
 
   subscribeButton?.addEventListener("click", async () => {
-    if (!subscribeButton) return;
+    if (!subscribeButton) {
+      return;
+    }
+
     const permission = await Notification.requestPermission();
+
     if (permission === "granted") {
       setButtonState(subscribeButton, "Notification permission granted", true);
       await registerServiceWorkerAndSubscribe(vapidPublicKey);
@@ -34,6 +38,7 @@ export function setupNotificationControls(vapidPublicKey: string) {
   fetchButton.addEventListener("click", async () => {
     const original = fetchButton.textContent;
     setButtonState(fetchButton, "Sending notification...", true);
+
     try {
       await requestNotificationFromServer();
     } catch (error) {
@@ -63,7 +68,9 @@ function ensureFetchButton() {
 }
 
 function updateSubscribeButtonUI(button: HTMLButtonElement | null) {
-  if (!button || typeof Notification === "undefined") return;
+  if (!button || typeof Notification === "undefined") {
+    return;
+  }
 
   if (Notification.permission === "granted") {
     setButtonState(button, "Notification permission granted", true);
